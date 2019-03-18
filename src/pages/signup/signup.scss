@@ -1,3 +1,18 @@
 page-signup {
 
+  //Eliminamos el scroll
+  .no-scroll .scroll-content {
+    overflow: hidden;
+  }
+
+  .register-img {
+    margin-left: -10%;
+  }
+
+
+  img {
+    margin-top: -2%;
+    max-width: 60%;
+    border: 0;
+  }
 }
