@@ -1,22 +1,19 @@
 import { Component } from '@angular/core';
+import { App, MenuController } from 'ionic-angular';
+import { HomePage } from './../../pages/home/home';
 
-/**
- * Generated class for the MenuComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'menu',
   templateUrl: 'menu.html'
 })
 export class MenuComponent {
 
-  text: string;
 
-  constructor() {
-    console.log('Hello MenuComponent Component');
-    this.text = 'Hello World';
+  constructor(public app: App, public menuCtrl: MenuController) {}
+
+  logout(): void {
+    this.menuCtrl.close();
+    let nav = this.app.getRootNav();
+    nav.setRoot(HomePage);
   }
-
 }

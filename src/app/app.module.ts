@@ -10,13 +10,16 @@ import { DashboardPage } from './../pages/dashboard/dashboard';
 import { SignupPage } from './../pages/signup/signup';
 import { UserProvider } from '../providers/user/user';
 import { HttpClientModule } from '@angular/common/http';
+import { MenuComponent } from '../components/menu/menu';
+import { UrlProvider } from '../providers/url/url';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     SignupPage,
-    DashboardPage
+    DashboardPage,
+    MenuComponent
   ],
   imports: [
     HttpClientModule,
@@ -34,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider
+    UserProvider,
+    UrlProvider
   ]
 })
 export class AppModule {}

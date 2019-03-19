@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { UrlProvider } from './../url/url';
+import { Observable } from "rxjs/Observable";
 
 /**
  * Objeto JSON que maneja las cabeceras
@@ -12,7 +14,7 @@ const httpHeaders = {
 
 @Injectable()
 export class UserProvider {
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient, public url : UrlProvider) {}
 
   /**
    * Metodo para manejar errores.
@@ -38,12 +40,12 @@ export class UserProvider {
    * @param body Recibe como parametro un Objeto JSON con la data que va a la BD
    * @returns Observable con la respuesta del servidor
    */
-  signup(body) {
+  signup(body): Observable <any> {
     console.log(body);
-    // const url = `${this.url.getUrl()}/ShoppingCart/SignUp`;
-    // return this.http
-    //   .post(url, body, httpHeaders)
-    //   .pipe(catchError(this.handleError));
+    const url = `${this.url.getUrl()}/register/createUser`;
+    return this.http
+      .post(url, body, httpHeaders)
+      .pipe();
   }
 
   /**
@@ -53,9 +55,9 @@ export class UserProvider {
    */
   login(body) {
     console.log(body);
-    // const url = `${this.url.getUrl()}/ShoppingCart/Login`;
-    // return this.http
-    //   .post(url, body, httpHeaders)
-    //   .pipe(catchError(this.handleError));
+    const url = `${this.url.getUrl()}/session/login`;
+    return this.http
+      .post(url, body, httpHeaders)
+      .pipe();
   }
 }

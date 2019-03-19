@@ -1,9 +1,13 @@
-
 <ion-menu [content]="content">
-    <ion-header>
-    </ion-header>
-    <ion-content>
-      <menu></menu>
-    </ion-content>
-  </ion-menu>
-  <ion-nav [root]="rootPage" #content></ion-nav>
+  <ion-header>
+    <ion-toolbar>
+      <ion-item no-lines text-center>
+        <img src="../assets/imgs/Logo White.png">
+      </ion-item>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <menu></menu>
+  </ion-content>
+</ion-menu>
+<ion-nav [root]="rootPage" #content></ion-nav>

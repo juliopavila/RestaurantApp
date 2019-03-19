@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SignupPage } from './../signup/signup';
 import { DashboardPage } from './../dashboard/dashboard';
@@ -13,7 +13,7 @@ export class HomePage {
 
   fg : FormGroup;
 
-  constructor(public navCtrl: NavController, private userHttp: UserProvider) {
+  constructor(public navCtrl: NavController, private userHttp: UserProvider, private alertCtrl: AlertController,) {
     this.fg = new FormGroup({
       username: new FormControl (null, [Validators.required,Validators.pattern(/[A-Za-z]+/)]),
       password: new FormControl (null, [Validators.required]),
@@ -21,11 +21,45 @@ export class HomePage {
   }
 
   login() : void {
-    this.userHttp.login(this.fg.value);
-    this.navCtrl.setRoot(DashboardPage);
+    // this.navCtrl.setRoot(DashboardPage);
+    if (this.fg.valid) {
+      this.userHttp.signup(this.fg.value).subscribe(
+        res => {
+          console.log(res.status);
+          if (res.status == 200) {
+            this.navCtrl.setRoot(DashboardPage);
+          } else {
+            alert("Error");
+            this.presentAlert("Error", "Usuario o contraseña incorrecto.");
+          }
+        },
+      );
+    } else {
+      this.presentAlert("Error", "Ha ocurrido un error de conexion, intente mas tarde.");
+    }
   }
 
   register() : void {
     this.navCtrl.setRoot(SignupPage);
+  }
+
+    /**
+   * Metodo para mostrar alerta de confirmacion
+   * @returns void
+   */
+  presentAlert(label,msg): void {
+    let alert = this.alertCtrl.create({
+      title: label,
+      subTitle: msg,
+      buttons: [
+        {
+          text: "ACEPTAR",
+          role: "Accept",
+          handler: () => {
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
