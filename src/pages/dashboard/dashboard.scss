@@ -13,8 +13,15 @@ page-dashboard {
   }
 
 
+  //Propiedades de la imagen del fondo
   ion-footer {
     max-width: 100vh !important;
     bottom: -1%;
+  }
+
+  //Propiedades de los botones
+  .button-clear-md,
+  .button-clear-ios {
+    height: 85px;
   }
 }

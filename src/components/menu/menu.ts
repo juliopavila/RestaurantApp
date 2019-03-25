@@ -8,8 +8,15 @@ import { HomePage } from './../../pages/home/home';
 })
 export class MenuComponent {
 
+  activeMenu: String;
 
   constructor(public app: App, public menuCtrl: MenuController) {}
+
+  menuActive(): void {
+    this.activeMenu = 'menu1';
+    this.menuCtrl.enable(true, 'menu1');
+    this.menuCtrl.enable(false, 'HomePage');
+  }
 
   logout(): void {
     this.menuCtrl.close();

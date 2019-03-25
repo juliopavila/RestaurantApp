@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams, AlertController } from "ionic-angular";
+import { IonicPage, NavController, NavParams, AlertController, MenuController } from "ionic-angular";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { HomePage } from "./../home/home";
 import { UserProvider } from "../../providers/user/user";
@@ -18,6 +18,7 @@ export class SignupPage {
     public navParams: NavParams,
     private userHttp: UserProvider,
     private alertCtrl: AlertController,
+    private menuCtrl: MenuController
   ) {
     this.fg = new FormGroup(
       {
@@ -41,9 +42,11 @@ export class SignupPage {
     );
   }
 
-  ionViewDidLoad() {}
+  ionViewDidLoad(): void{
+    this.menuCtrl.enable(false);
+  }
 
-  passwordMatchValidator = function(fg: FormGroup) {
+  passwordMatchValidator = (fg: FormGroup) => {
     return fg.get("password").value === fg.get("confPass").value ? null : { mismatch: true };
   };
 
@@ -52,13 +55,13 @@ export class SignupPage {
       this.userHttp.signup(this.fg.value).subscribe(res => {
         console.log(res.status);
         if (res.status == 200) {
-          this.presentAlert("Confirmacion", "Se ha creado la cuenta satisfactoriamente.");
+          this.presentAlert("Confirmacion", "Se ha creado la cuenta satisfactoriamente.", 200);
         } else {
-          this.presentAlert("Error", "Ha ocurrido un error, intente mas tarde.");
+          this.presentAlert("Error", "Ha ocurrido un  , intente mas tarde.",401);
         }
       });
     } else {
-      this.presentAlert("Error", "Ha ocurrido un error de conexion, intente mas tarde.");
+      this.presentAlert("Error", "Ha ocurrido un error de conexion, intente mas tarde.",500);
     }
   }
 
@@ -70,7 +73,7 @@ export class SignupPage {
    * Metodo para mostrar alerta de confirmacion
    * @returns void
    */
-  presentAlert(label,msg): void {
+  presentAlert(label,msg, status): void {
     let alert = this.alertCtrl.create({
       title: label,
       subTitle: msg,
@@ -79,7 +82,9 @@ export class SignupPage {
           text: "ACEPTAR",
           role: "Accept",
           handler: () => {
-            this.navCtrl.setRoot(HomePage);
+            if(status == 200){
+              this.navCtrl.setRoot(HomePage);
+            }
           }
         }
       ]
