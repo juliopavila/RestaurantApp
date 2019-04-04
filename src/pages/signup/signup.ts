@@ -10,7 +10,7 @@ import { UserProvider } from "../../providers/user/user";
   templateUrl: "signup.html"
 })
 export class SignupPage {
-  values = [{ value: 0, label: "Cocina" }, { value: 1, label: "Caja" }];
+  values = [{ value: 0, label: "Cocina" }, { value: 1, label: "Caja" }, { value: 2, label: "Contabilidad"}];
 
   fg: FormGroup;
   constructor(

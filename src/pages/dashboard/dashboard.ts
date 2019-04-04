@@ -9,6 +9,8 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 })
 export class DashboardPage {
 
+  type_user: any;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -17,6 +19,7 @@ export class DashboardPage {
 
   ionViewDidLoad() {
     this.menuCtrl.enable(true);
+    this.type_user = this.navParams.get('type_user');
   }
 
 }

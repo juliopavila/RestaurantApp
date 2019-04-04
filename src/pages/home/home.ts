@@ -12,6 +12,7 @@ import { UserProvider } from '../../providers/user/user';
 export class HomePage {
 
   fg : FormGroup;
+  params = 0;
 
   constructor(
     public navCtrl: NavController, 
@@ -30,7 +31,7 @@ export class HomePage {
   }
 
   login() : void {
-    this.navCtrl.setRoot(DashboardPage);
+    this.navCtrl.setRoot(DashboardPage,{type_user:this.params});
     // if (this.fg.valid) {
     //   this.userHttp.signup(this.fg.value).subscribe(
     //     res => {

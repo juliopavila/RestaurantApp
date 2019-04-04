@@ -10,20 +10,26 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <div text-center>
-          <button ion-button clear><img src="../../assets/imgs/Home.png"></button>
-        </div>
-      </ion-col>
-      <ion-col>
-        <div text-center>
-          <button ion-button clear><img src="../../assets/imgs/dish.png"></button>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <!-- Menu para la cocina-->
+  <ion-item no-lines *ngIf="type_user === 0">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div text-center>
+            <button ion-button clear><img src="../../assets/imgs/dish.png"></button>
+            <h3>Platillos</h3>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div text-center>
+            <button ion-button clear><img src="../../assets/imgs/diet.png"></button>
+            <h3>Ingredientes</h3>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+  <!-- Fin de menu para la cocina-->
 </ion-content>
 
 <ion-footer no-shadow no-border>

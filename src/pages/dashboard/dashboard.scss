@@ -24,4 +24,8 @@ page-dashboard {
   .button-clear-ios {
     height: 85px;
   }
+
+  h3 {
+    color: color($colors, primary, base);
+  }
 }
