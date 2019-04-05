@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { SessionProvider } from '../../providers/session/session';
+import { DishPage } from '../dish/dish';
+import { IngredientsPage } from '../ingredients/ingredients';
 
 
 @IonicPage()
@@ -14,12 +17,26 @@ export class DashboardPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private session: SessionProvider
   ) {}
 
-  ionViewDidLoad() {
+  ionViewDidLoad(): void{
+    let user = this.session.user;
     this.menuCtrl.enable(true);
-    this.type_user = this.navParams.get('type_user');
+    this.type_user = user.type;
+  }
+
+  move(op): void{
+    switch(op){
+      case 1: 
+        this.navCtrl.push(DishPage);
+        break;
+
+      case 2:
+        this.navCtrl.push(IngredientsPage);
+        break;
+    }
   }
 
 }

@@ -1,0 +1,16 @@
+<ion-header no-shadow no-border>
+  <ion-navbar no-lines>
+    <ion-title>TIPOS DE MENU</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-item no-lines>
+    <ion-list>
+       <button ion-item *ngFor="let m of type_menu" (click)="selectMenu(m.list_recipe)">
+        <ion-label>{{ m.general_name }}</ion-label>
+      </button> 
+    </ion-list>
+  </ion-item>
+</ion-content>

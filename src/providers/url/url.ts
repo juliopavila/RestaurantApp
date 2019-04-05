@@ -11,7 +11,7 @@ export class UrlProvider {
    * @returns Retorna la ip del servidor
    */
   getUrl(): string {
-    let url = "http://easyrestaurant.ddns.net:3001";
+    let url = "http://restaurant.ddns.net:3001";
     return url;
   }
 }

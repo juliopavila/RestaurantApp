@@ -12,6 +12,12 @@ import { UserProvider } from '../providers/user/user';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from '../components/menu/menu';
 import { UrlProvider } from '../providers/url/url';
+import { SessionProvider } from '../providers/session/session';
+import { DishPage } from '../pages/dish/dish';
+import { DishHttpProvider } from '../providers/dish-http/dish-http';
+import { MenuDishPage } from '../pages/menu-dish/menu-dish';
+import { RecipePage } from '../pages/recipe/recipe';
+import { IngredientsPage } from '../pages/ingredients/ingredients';
 
 @NgModule({
   declarations: [
@@ -19,7 +25,11 @@ import { UrlProvider } from '../providers/url/url';
     HomePage,
     SignupPage,
     DashboardPage,
-    MenuComponent
+    MenuComponent,
+    DishPage,
+    MenuDishPage,
+    RecipePage,
+    IngredientsPage
   ],
   imports: [
     HttpClientModule,
@@ -31,14 +41,20 @@ import { UrlProvider } from '../providers/url/url';
     MyApp,
     HomePage,
     SignupPage,
-    DashboardPage
+    DashboardPage,
+    DishPage,
+    MenuDishPage,
+    RecipePage,
+    IngredientsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
-    UrlProvider
+    UrlProvider,
+    SessionProvider,
+    DishHttpProvider
   ]
 })
 export class AppModule {}

@@ -1,0 +1,27 @@
+<ion-header no-shadow no-border>
+  <ion-navbar no-lines>
+    <ion-buttons left></ion-buttons>
+    <ion-title>RECETA</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item no-lines> 
+    <ion-grid>
+      <ion-row *ngFor="let r of details">
+        <ion-col>
+          <ion-label>Ingrediente: {{ r.ingredent_name }}</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>Cantidad de {{ r.ingredent_name }}: {{ r.ingredent_measure }}</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>Ingrediente en existencia: {{ r.ingredent_exist }}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+</ion-content>

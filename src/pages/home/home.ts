@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SignupPage } from './../signup/signup';
 import { DashboardPage } from './../dashboard/dashboard';
 import { UserProvider } from '../../providers/user/user';
+import { SessionProvider } from '../../providers/session/session';
 
 @Component({
   selector: 'page-home',
@@ -18,7 +19,8 @@ export class HomePage {
     public navCtrl: NavController, 
     private userHttp: UserProvider, 
     private alertCtrl: AlertController,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private session: SessionProvider
   ) {
     this.fg = new FormGroup({
       username: new FormControl (null, [Validators.required,Validators.pattern(/[A-Za-z]+/)]),
@@ -31,22 +33,23 @@ export class HomePage {
   }
 
   login() : void {
-    this.navCtrl.setRoot(DashboardPage,{type_user:this.params});
-    // if (this.fg.valid) {
-    //   this.userHttp.signup(this.fg.value).subscribe(
-    //     res => {
-    //       console.log(res.status);
-    //       if (res.status == 200) {
-    //         this.navCtrl.setRoot(DashboardPage);
-    //       } else {
-    //         alert("Error");
-    //         this.presentAlert("Error", "Usuario o contraseña incorrecto.");
-    //       }
-    //     },
-    //   );
-    // } else {
-    //   this.presentAlert("Error", "Ha ocurrido un error de conexion, intente mas tarde.");
-    // }
+    if (this.fg.valid) {
+      this.userHttp.login(this.fg.value).subscribe(
+        res => {
+          console.log(res.status);
+          if (res.status == 200) {
+            console.log(res.status);
+            this.session.dataSession(res);
+            this.navCtrl.setRoot(DashboardPage);
+          } else {
+            alert("Error");
+            this.presentAlert("Error", "Usuario o contraseña incorrecto.");
+          }
+        },
+      );
+    } else {
+      this.presentAlert("Error", "Ha ocurrido un error de conexion, intente mas tarde.");
+    }
   }
 
   register() : void {

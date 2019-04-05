@@ -42,7 +42,7 @@ export class UserProvider {
    */
   signup(body): Observable <any> {
     console.log(body);
-    const url = `${this.url.getUrl()}/register/createUser`;
+    const url = `${this.url.getUrl()}/register`;
     return this.http
       .post(url, body, httpHeaders)
       .pipe();
@@ -53,11 +53,22 @@ export class UserProvider {
    * @param body Recibe como parametro un Objeto JSON con la data que va a la BD
    * @returns Observable con la respuesta del servidor
    */
-  login(body) {
+  login(body): Observable <any> {
     console.log(body);
-    const url = `${this.url.getUrl()}/session/login`;
+    const url = `${this.url.getUrl()}/session`;
     return this.http
       .post(url, body, httpHeaders)
+      .pipe();
+  }
+
+  /**
+   * Metodo de enviar la peticion para cerrar session
+   * @returns Observable con la respuesta del servidor
+   */
+  logout(): Observable <any> {
+    const url = `${this.url.getUrl()}/session`;
+    return this.http
+      .get(url, httpHeaders)
       .pipe();
   }
 }
