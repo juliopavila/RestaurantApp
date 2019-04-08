@@ -50,4 +50,10 @@ export class DishHttpProvider {
       .pipe();
   }
 
+  postIngredients(body): Observable<any> {
+    const url = `${this.url.getUrl()}/ingredients`;
+    return this.http
+    .post(url,body, httpHeaders)
+    .pipe();
+  }
 }

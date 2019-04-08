@@ -22,9 +22,10 @@ export class DashboardPage {
   ) {}
 
   ionViewDidLoad(): void{
-    let user = this.session.user;
+    // let user = this.session.user;
+    // this.type_user = user.type;
     this.menuCtrl.enable(true);
-    this.type_user = user.type;
+    this.type_user = this.navParams.get('type');
   }
 
   move(op): void{

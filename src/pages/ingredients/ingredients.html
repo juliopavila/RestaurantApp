@@ -6,19 +6,34 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item no-lines>
-    <ion-list>
-      <ion-row *ngFor="let i of list">
-        <ion-col>
-          <ion-label>Ingrediente: {{ i.ingredent_name }}</ion-label>
-        </ion-col>
-        <ion-col>
-          <ion-label>Cantidad de {{ i.ingredent_name }}: {{ i.ingredent_measure }}</ion-label>
-        </ion-col>
-        <ion-col>
-          <ion-label>Ingrediente en existencia: {{ i.ingredent_exist }}</ion-label>
-        </ion-col>
-      </ion-row>
-    </ion-list>
-  </ion-item>
+  <ion-list radio-group>
+    <ion-item *ngFor="let i of list">
+      <ion-label>{{i.ingredent_name}}</ion-label>
+      <ion-radio [value]="i.ingredent_id"></ion-radio>
+    </ion-item>
+    <!-- <ion-row *ngFor="let i of list">
+      <ion-col>
+        <ion-label>Ingrediente: {{ i.ingredent_name }}</ion-label>
+      </ion-col>
+      <ion-col *ngIf="i.ingredent_exist  === true">
+        <ion-label>Ingrediente en existencia: Si</ion-label>
+      </ion-col>
+      <ion-col *ngIf="i.ingredent_exist  === false">
+        <ion-label>Ingrediente en existencia: No</ion-label>
+      </ion-col>
+    </ion-row> -->
+  </ion-list>
+  <ion-fab right bottom>
+    <button ion-fab>
+      <ion-icon name="ios-arrow-back-outline"></ion-icon>
+    </button>
+    <ion-fab-list side="left">
+      <button ion-fab primary (click)="newIngredentAlert()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      <button ion-fab (click)="updateIngredentAlert()">
+        <ion-icon name="ios-create-outline"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

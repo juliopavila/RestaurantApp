@@ -11,4 +11,8 @@ page-ingredients {
   .toolbar-title-md {
     color: color($colors, primary, base);
   }
+
+  h2{
+    color: color($colors, primary, base) !important;
+  }
 }

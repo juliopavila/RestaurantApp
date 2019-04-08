@@ -18,6 +18,7 @@ import { DishHttpProvider } from '../providers/dish-http/dish-http';
 import { MenuDishPage } from '../pages/menu-dish/menu-dish';
 import { RecipePage } from '../pages/recipe/recipe';
 import { IngredientsPage } from '../pages/ingredients/ingredients';
+import { PopoverComponent } from '../components/popover/popover';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { IngredientsPage } from '../pages/ingredients/ingredients';
     DishPage,
     MenuDishPage,
     RecipePage,
-    IngredientsPage
+    IngredientsPage,
+    PopoverComponent
   ],
   imports: [
     HttpClientModule,
@@ -45,6 +47,7 @@ import { IngredientsPage } from '../pages/ingredients/ingredients';
     DishPage,
     MenuDishPage,
     RecipePage,
+    PopoverComponent,
     IngredientsPage
   ],
   providers: [
