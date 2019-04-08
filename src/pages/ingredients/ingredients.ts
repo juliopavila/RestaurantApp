@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Testability } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { DishHttpProvider } from '../../providers/dish-http/dish-http';
-import { PopoverController } from 'ionic-angular';
-import { PopoverComponent } from '../../components/popover/popover';
 
 
 @IonicPage()
@@ -13,12 +11,12 @@ import { PopoverComponent } from '../../components/popover/popover';
 export class IngredientsPage {
 
   list: any[] = [];
+  id;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private dishHttp: DishHttpProvider,
-    public popoverCtrl: PopoverController,
     private alertCtrl: AlertController
   ) {
   }
@@ -36,11 +34,8 @@ export class IngredientsPage {
       })
   }
 
-  presentPopover(myEvent) {
-    let popover = this.popoverCtrl.create(PopoverComponent);
-    popover.present({
-      ev: myEvent
-    });
+  takeId(info) {
+    this.id = info;
   }
 
   newIngredentAlert(): void {
@@ -93,15 +88,26 @@ export class IngredientsPage {
           text: "ACEPTAR",
           role: "Accept",
           handler: data => {
-            this.newIngredients(data);
+            let body = {
+              'name': data.name,
+              'id': this.id
+            }
+            this.updateIngredients(body);
           }
         }
       ]
     });
     alert.present();
   }
+
   newIngredients(name): void {
     this.dishHttp.postIngredients(name)
+      .subscribe(res => {
+        this.ingredients();
+      })
+  } 
+  updateIngredients(body): void {
+    this.dishHttp.putIngredients(body)
       .subscribe(res => {
         this.ingredients();
       })

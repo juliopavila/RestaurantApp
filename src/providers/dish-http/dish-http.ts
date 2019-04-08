@@ -53,7 +53,14 @@ export class DishHttpProvider {
   postIngredients(body): Observable<any> {
     const url = `${this.url.getUrl()}/ingredients`;
     return this.http
-    .post(url,body, httpHeaders)
-    .pipe();
+      .post(url, body, httpHeaders)
+      .pipe();
+  }
+
+  putIngredients(body): Observable<any> {
+    const url = `${this.url.getUrl()}/ingredients`;
+    return this.http
+      .put(url, body, httpHeaders)
+      .pipe();
   }
 }

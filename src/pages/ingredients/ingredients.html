@@ -9,19 +9,8 @@
   <ion-list radio-group>
     <ion-item *ngFor="let i of list">
       <ion-label>{{i.ingredent_name}}</ion-label>
-      <ion-radio [value]="i.ingredent_id"></ion-radio>
+      <ion-radio [value]="i.ingredent_id" (ionSelect)="takeId(i.ingredent_id)"></ion-radio>
     </ion-item>
-    <!-- <ion-row *ngFor="let i of list">
-      <ion-col>
-        <ion-label>Ingrediente: {{ i.ingredent_name }}</ion-label>
-      </ion-col>
-      <ion-col *ngIf="i.ingredent_exist  === true">
-        <ion-label>Ingrediente en existencia: Si</ion-label>
-      </ion-col>
-      <ion-col *ngIf="i.ingredent_exist  === false">
-        <ion-label>Ingrediente en existencia: No</ion-label>
-      </ion-col>
-    </ion-row> -->
   </ion-list>
   <ion-fab right bottom>
     <button ion-fab>

@@ -4,13 +4,6 @@ import { DishHttpProvider } from '../../providers/dish-http/dish-http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { MenuDishPage } from '../menu-dish/menu-dish';
 
-/**
- * Generated class for the DishPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-dish',
