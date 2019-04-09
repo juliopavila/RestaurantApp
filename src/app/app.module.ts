@@ -19,6 +19,8 @@ import { MenuDishPage } from '../pages/menu-dish/menu-dish';
 import { RecipePage } from '../pages/recipe/recipe';
 import { IngredientsPage } from '../pages/ingredients/ingredients';
 import { PopoverComponent } from '../components/popover/popover';
+import { ReportPage } from '../pages/report/report';
+import { ReportHttpProvider } from '../providers/report-http/report-http';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { PopoverComponent } from '../components/popover/popover';
     MenuDishPage,
     RecipePage,
     IngredientsPage,
-    PopoverComponent
+    PopoverComponent,
+    ReportPage
   ],
   imports: [
     HttpClientModule,
@@ -48,7 +51,8 @@ import { PopoverComponent } from '../components/popover/popover';
     MenuDishPage,
     RecipePage,
     PopoverComponent,
-    IngredientsPage
+    IngredientsPage,
+    ReportPage
   ],
   providers: [
     StatusBar,
@@ -57,7 +61,8 @@ import { PopoverComponent } from '../components/popover/popover';
     UserProvider,
     UrlProvider,
     SessionProvider,
-    DishHttpProvider
+    DishHttpProvider,
+    ReportHttpProvider
   ]
 })
 export class AppModule {}

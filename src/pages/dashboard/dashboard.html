@@ -14,16 +14,22 @@
   <ion-item no-lines *ngIf="type_user === 0">
     <ion-grid>
       <ion-row>
-        <ion-col>
+        <ion-col col-6>
           <div text-center>
             <button ion-button clear (click)="move(1)"><img src="../../assets/imgs/dish.png"></button>
             <h3>Platillos</h3>
           </div>
         </ion-col>
-        <ion-col>
+        <ion-col col-6>
           <div text-center>
             <button ion-button clear (click)="move(2)"><img src="../../assets/imgs/diet.png"></button>
             <h3>Ingredientes</h3>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div text-center>
+            <button ion-button clear (click)="move(3)"><img src="../../assets/imgs/tray.png"></button>
+            <h3>Reportes</h3>
           </div>
         </ion-col>
       </ion-row>
