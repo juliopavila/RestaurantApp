@@ -21,6 +21,7 @@ import { IngredientsPage } from '../pages/ingredients/ingredients';
 import { PopoverComponent } from '../components/popover/popover';
 import { ReportPage } from '../pages/report/report';
 import { ReportHttpProvider } from '../providers/report-http/report-http';
+import { FakeDataProvider } from '../providers/fake-data/fake-data';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ReportHttpProvider } from '../providers/report-http/report-http';
     UrlProvider,
     SessionProvider,
     DishHttpProvider,
-    ReportHttpProvider
+    ReportHttpProvider,
+    FakeDataProvider
   ]
 })
 export class AppModule {}

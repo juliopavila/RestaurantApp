@@ -2,34 +2,60 @@
   <ion-navbar no-lines>
     <ion-title>REPORTES</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
   <form [formGroup]="fg" (ngSubmit)="report()">
     <ion-item>
       <ion-label>Fecha de comienzo:</ion-label>
-      <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MM YYYY" formControlName="dateFrom"></ion-datetime>
+      <ion-datetime
+        displayFormat="DD MMM YYYY"
+        pickerFormat="DD MM YYYY"
+        formControlName="dateFrom"
+      ></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Fecha de finalizacion:</ion-label>
-      <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MM YYYY" formControlName="dateTo">
+      <ion-datetime
+        displayFormat="DD MMM YYYY"
+        pickerFormat="DD MM YYYY"
+        formControlName="dateTo"
+      >
       </ion-datetime>
     </ion-item>
     <div padding>
       <button ion-button round block type="submit">SOLICITAR REPORTE</button>
     </div>
   </form>
+  <ion-toolbar no-border-top *ngIf="searchState">
+    <ion-searchbar
+      (ionInput)="onCancel($event)"
+      (ionCancel)="onCancel($event)"
+      [(ngModel)]="keySearch"
+      (keyup)="filterProducts(keySearch)"
+      placeholder="Nombre Del Cliente"
+    ></ion-searchbar>
+  </ion-toolbar>
+  <!-- <ion-item *ngFor="let r of list">
+    <div *ngIf="r.state">
+      <p>No. De Factura: {{ r.bill_facture_number }}</p>
+      <p>Fecha: {{ r.bill_creatin_time | date: "dd/MM/yyyy" }}</p>
+      <p>Cliente: {{ r.bill_name_client }} {{ r.bill_lastname_client }}</p>
+      <p>Monto De la Factura: {{ r.bill_mount }}$</p>
+    </div>
+  </ion-item> -->
 
-  <ion-list>
-    <ion-item *ngFor="let r of list">
-      No. De Factura: {{r.bill_facture_number}}
-      <br>
-      Fecha: {{r.bill_creatin_time | date: 'dd/MM/yyyy'}}
-      <br>
-      Cliente: {{r.bill_name_client}} {{r.bill_lastname_client}}
-      <br>
-      Monto De la Factura: {{r.bill_mount}}$
-    </ion-item>
-  </ion-list>
+  <ion-card *ngFor="let r of list">
+    <div *ngIf="r.state">
+      <ion-card-content>
+        <ion-card-title
+          >Cliente: {{ r.bill_name_client }}
+          {{ r.bill_lastname_client }}</ion-card-title
+        >
+        <p>No. De Factura: {{ r.bill_facture_number }}</p>
+        <p>Fecha: {{ r.bill_creatin_time | date: "dd/MM/yyyy" }}</p>
+        <p>Monto De la Factura: {{ r.bill_mount }}$</p>
+      </ion-card-content>
+    </div>
+  </ion-card>
 </ion-content>

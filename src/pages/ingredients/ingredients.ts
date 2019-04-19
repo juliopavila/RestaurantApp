@@ -1,15 +1,19 @@
-import { Component, Testability } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { DishHttpProvider } from '../../providers/dish-http/dish-http';
-
+import { Component, Testability } from "@angular/core";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  AlertController
+} from "ionic-angular";
+import { DishHttpProvider } from "../../providers/dish-http/dish-http";
+import { FakeDataProvider } from "../../providers/fake-data/fake-data";
 
 @IonicPage()
 @Component({
-  selector: 'page-ingredients',
-  templateUrl: 'ingredients.html',
+  selector: "page-ingredients",
+  templateUrl: "ingredients.html"
 })
 export class IngredientsPage {
-
   list: any[] = [];
   id;
 
@@ -17,9 +21,9 @@ export class IngredientsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private dishHttp: DishHttpProvider,
-    private alertCtrl: AlertController
-  ) {
-  }
+    private alertCtrl: AlertController,
+    private fake: FakeDataProvider
+  ) {}
 
   ionViewDidLoad(): void {
     this.ingredients();
@@ -27,11 +31,14 @@ export class IngredientsPage {
 
   ingredients(): void {
     this.list = [];
-    this.dishHttp.getIngredients()
-      .subscribe(res => {
-        this.list = res.ingredients;
-        console.log(this.list);
-      })
+    // this.dishHttp.getIngredients()
+    //   .subscribe(res => {
+    //     this.list = res.ingredients;
+    //     console.log(this.list);
+    //   })
+    this.fake.getIngridents().then(res => {
+      this.list = res.ingredients;
+    });
   }
 
   takeId(info) {
@@ -40,20 +47,19 @@ export class IngredientsPage {
 
   newIngredentAlert(): void {
     let alert = this.alertCtrl.create({
-      title: 'Nuevo Ingrediente',
+      title: "Nuevo Ingrediente",
       inputs: [
         {
-          name: 'name',
-          placeholder: 'Nombre del ingrediente',
-          value: ''
+          name: "name",
+          placeholder: "Nombre del ingrediente",
+          value: ""
         }
       ],
       buttons: [
         {
           text: "CANCELAR",
           role: "Cancel",
-          handler: () => {
-          }
+          handler: () => {}
         },
         {
           text: "ACEPTAR",
@@ -69,29 +75,28 @@ export class IngredientsPage {
 
   updateIngredentAlert(): void {
     let alert = this.alertCtrl.create({
-      title: 'Actualizar Ingrediente',
+      title: "Actualizar Ingrediente",
       inputs: [
         {
-          name: 'name',
-          placeholder: 'Nuevo nombre del ingrediente',
-          value: ''
+          name: "name",
+          placeholder: "Nuevo nombre del ingrediente",
+          value: ""
         }
       ],
       buttons: [
         {
           text: "CANCELAR",
           role: "Cancel",
-          handler: () => {
-          }
+          handler: () => {}
         },
         {
           text: "ACEPTAR",
           role: "Accept",
           handler: data => {
             let body = {
-              'name': data.name,
-              'id': this.id
-            }
+              name: data.name,
+              id: this.id
+            };
             this.updateIngredients(body);
           }
         }
@@ -101,15 +106,13 @@ export class IngredientsPage {
   }
 
   newIngredients(name): void {
-    this.dishHttp.postIngredients(name)
-      .subscribe(res => {
-        this.ingredients();
-      })
-  } 
+    this.dishHttp.postIngredients(name).subscribe(res => {
+      this.ingredients();
+    });
+  }
   updateIngredients(body): void {
-    this.dishHttp.putIngredients(body)
-      .subscribe(res => {
-        this.ingredients();
-      })
+    this.dishHttp.putIngredients(body).subscribe(res => {
+      this.ingredients();
+    });
   }
 }
