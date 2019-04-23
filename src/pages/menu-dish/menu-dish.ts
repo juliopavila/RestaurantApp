@@ -9,7 +9,6 @@ import { RecipePage } from "../recipe/recipe";
 import { DishHttpProvider } from "../../providers/dish-http/dish-http";
 import { DishPage } from "../dish/dish";
 import { ActionSheetController } from "ionic-angular";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 
 @IonicPage()
 @Component({
@@ -164,7 +163,12 @@ export class MenuDishPage {
       });
     });
 
-    alert.addButton("CANCELAR");
+    alert.addButton({
+      text: "ATRAS",
+      handler: () => {
+        this.newIngredentAlert();
+      }
+    });
     alert.addButton({
       text: "ACEPTAR",
       handler: (data: any) => {

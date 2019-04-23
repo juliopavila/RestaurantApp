@@ -6,17 +6,21 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding> </ion-content>
+<ion-content padding>
+  <ion-item *ngFor="let d of cart">
+    {{ d.dish }}
+  </ion-item>
+</ion-content>
 <ion-footer>
   <ion-fab right bottom>
     <button ion-fab>
       <ion-icon name="ios-arrow-back-outline"></ion-icon>
     </button>
     <ion-fab-list side="left">
-      <button ion-fab primary (click)="">
+      <button ion-fab primary (click)="doRadio()">
         <ion-icon name="add"></ion-icon>
       </button>
-      <button ion-fab (click)="">
+      <button ion-fab>
         <ion-icon name="cart"></ion-icon>
       </button>
     </ion-fab-list>

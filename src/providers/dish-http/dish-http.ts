@@ -57,10 +57,10 @@ export class DishHttpProvider {
     return this.http.post(url, body, httpHeaders).pipe();
   }
 
-  deletePlate(body): Observable<any> {
-    const url = `${this.url.getUrl()}/recipe`;
-    return this.http.delete(url, body, httpHeaders).pipe();
-  }
+  // deletePlate(body): Observable<any> {
+  //   const url = `${this.url.getUrl()}/recipe`;
+  //   return this.http.delete(url, body, httpHeaders).pipe();
+  // }
 
   updatePlate(body): Observable<any> {
     const url = `${this.url.getUrl()}/recipe`;
