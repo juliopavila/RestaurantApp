@@ -30,17 +30,20 @@ export class ReportPage {
   report(): void {
     this.searchState = true;
     this.list = [];
-    // let data = this.fg.value;
-    // this.reportHttp.getReport(data.dateFrom, data.dateTo)
-    // .subscribe(res => {
-    //   this.list = res;
-    // })
-    this.fake.getReports().then(d => {
-      this.list = d.bill;
+    let data = this.fg.value;
+    this.reportHttp.getReport(data.dateFrom, data.dateTo).subscribe(res => {
+      console.log(res);
+      this.list = res;
       this.list.forEach(p => {
         p.state = true;
       });
     });
+    // this.fake.getReports().then(d => {
+    //   this.list = d.bill;
+    //   this.list.forEach(p => {
+    //     p.state = true;
+    //   });
+    // });
   }
 
   /**

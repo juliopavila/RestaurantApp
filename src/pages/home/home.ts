@@ -35,7 +35,7 @@ export class HomePage {
   }
 
   login(): void {
-    this.navCtrl.setRoot(DashboardPage, { type: 0 });
+    this.navCtrl.setRoot(DashboardPage, { type: 1 });
     // if (this.fg.valid) {
     //   this.userHttp.login(this.fg.value).subscribe(
     //     res => {

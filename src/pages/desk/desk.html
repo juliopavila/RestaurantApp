@@ -1,0 +1,35 @@
+<ion-header no-shadow no-border>
+  <ion-navbar no-lines>
+    <ion-title>MESAS</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item no-lines>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 *ngFor="let m of tables_in_use">
+          <div text-center>
+            <button ion-button clear (click)="move(m.name, m.lastname)">
+              <img
+                src="../../assets/imgs/restaurant.png"
+                width="80px"
+                height="80px"
+              />
+            </button>
+            <h3>{{ m.name }} {{ m.lastname }}</h3>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+  <!-- <button ion-button (click)="test()">TEST</button> -->
+</ion-content>
+
+<ion-footer>
+  <ion-fab right bottom>
+    <button ion-fab (click)="newDeskAlert()" [disabled]="avaliable === false">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-footer>

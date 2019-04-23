@@ -145,4 +145,112 @@ export class FakeDataProvider {
       }, 1000);
     });
   }
+
+  getTables(): any {
+    const data = {
+      desk: [
+        {
+          id: 0,
+          name: "Julio",
+          lastname: "Avila"
+        },
+        {
+          id: 1,
+          name: "Jose",
+          lastname: "Avila"
+        },
+        {
+          id: 2,
+          name: "Andres",
+          lastname: "Avila"
+        },
+        {
+          id: 3,
+          name: "Ramon",
+          lastname: "Avila"
+        },
+        {
+          id: 4,
+          name: "Daniela",
+          lastname: "Avila"
+        },
+        {
+          id: 5,
+          name: "Pedro",
+          lastname: "Avila"
+        }
+      ]
+    };
+    return new Promise((resolve, reject) => {
+      window.setTimeout(() => {
+        console.log("Result obtainined... for example from a service");
+        resolve({ desk: data.desk });
+      }, 1000);
+    });
+  }
+
+  getPlates(): any {
+    const data = {
+      general_category: [
+        {
+          general_name: "Almuerzos",
+          list_recipe: [
+            {
+              type_recipe_id: 1,
+              type_recipe_description: "Pastas",
+              recipe_id: 2,
+              recipe_title: "Pasta sola"
+            },
+            {
+              type_recipe_id: 1,
+              type_recipe_description: "Pastas",
+              recipe_id: 8,
+              recipe_title: "Sppaggethi con atuncito"
+            },
+            {
+              type_recipe_id: 1,
+              type_recipe_description: "Pastas",
+              recipe_id: 7,
+              recipe_title: "Sppaggethi con Arroz"
+            },
+            {
+              type_recipe_id: 2,
+              type_recipe_description: "Parrillas",
+              recipe_id: 5,
+              recipe_title: "Parrilla mixta para una persona"
+            },
+            {
+              type_recipe_id: 1,
+              type_recipe_description: "Pastas",
+              recipe_id: 1,
+              recipe_title: "Spaghetti Bolognese"
+            },
+            {
+              type_recipe_id: 1,
+              type_recipe_description: "Pastas",
+              recipe_id: 3,
+              recipe_title: "Pasta con Carne"
+            }
+          ]
+        },
+        {
+          general_name: "Postres",
+          list_recipe: [
+            {
+              type_recipe_id: 3,
+              type_recipe_description: "Tortas",
+              recipe_id: 4,
+              recipe_title: "Torta divina de chocolate"
+            }
+          ]
+        }
+      ]
+    };
+    return new Promise((resolve, reject) => {
+      window.setTimeout(() => {
+        console.log("Result obtainined... for example from a service");
+        resolve({ general_category: data.general_category });
+      }, 1000);
+    });
+  }
 }

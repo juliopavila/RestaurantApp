@@ -1,0 +1,24 @@
+page-details {
+  .toolbar-background {
+    background-color: transparent;
+  }
+  .bar-button-default-md,
+  .bar-button-clear-md-default,
+  .bar-button-md-default {
+    color: color($colors, primary, base);
+  }
+
+  .toolbar-title-md {
+    color: color($colors, primary, base);
+  }
+
+  //Propiedades de los botones
+  .button-clear-md,
+  .button-clear-ios {
+    height: 85px;
+  }
+
+  h3 {
+    color: color($colors, primary, base);
+  }
+}

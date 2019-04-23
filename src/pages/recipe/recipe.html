@@ -3,11 +3,9 @@
     <ion-buttons left></ion-buttons>
     <ion-title>RECETA</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
-
   <ion-item no-lines>
     <ion-grid>
       <ion-row *ngFor="let r of details">
@@ -15,7 +13,10 @@
           <ion-label>Ingrediente: {{ r.ingredent_name }}</ion-label>
         </ion-col>
         <ion-col>
-          <ion-label>Cantidad de {{ r.ingredent_name }}: {{ r.ingredent_measure }}</ion-label>
+          <ion-label
+            >Cantidad de {{ r.ingredent_name }}:
+            {{ r.ingredent_measure }}</ion-label
+          >
         </ion-col>
         <ion-col *ngIf="r.ingredent_exist === true">
           <ion-label>Ingrediente en existencia: Si</ion-label>
@@ -26,5 +27,4 @@
       </ion-row>
     </ion-grid>
   </ion-item>
-
 </ion-content>

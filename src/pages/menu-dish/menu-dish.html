@@ -3,15 +3,19 @@
     <ion-buttons left></ion-buttons>
     <ion-title>PLATILLOS</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
   <ion-list>
     <ion-row *ngFor="let m of dish">
       <ion-col>
-        <ion-item (click)="recipe(m.recipe_id)" text-left no-lines>
-          {{m.recipe_title}}
+        <ion-item
+          (press)="presentActionSheet(m.recipe_id)"
+          (click)="recipe(m.recipe_id)"
+          text-left
+          no-lines
+        >
+          {{ m.recipe_title }}
         </ion-item>
       </ion-col>
       <ion-col>
@@ -21,10 +25,11 @@
       </ion-col>
     </ion-row>
   </ion-list>
-  <!-- <ion-fab right bottom>
-      <button ion-fab color="primary"><ion-icon name="ios-arrow-back-outline"></ion-icon></button>
-      <ion-fab-list side="right">
-        <button ion-fab><ion-icon name=""></ion-icon></button>
-      </ion-fab-list>
-  </ion-fab> -->
 </ion-content>
+<ion-footer>
+  <ion-fab right bottom>
+    <button ion-fab (click)="newIngredentAlert()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-footer>
