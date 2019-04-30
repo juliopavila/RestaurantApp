@@ -3,7 +3,8 @@ import {
   IonicPage,
   NavController,
   NavParams,
-  AlertController
+  AlertController,
+  ActionSheetController
 } from "ionic-angular";
 import { DeskStateProvider } from "../../providers/desk-state/desk-state";
 import { FakeDataProvider } from "../../providers/fake-data/fake-data";
@@ -17,16 +18,41 @@ import { DetailsPage } from "../details/details";
 export class DeskPage {
   avaliable = true;
   tables_in_use: any[] = [];
+  tables = [];
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public table: DeskStateProvider,
+    public actionSheetCtrl: ActionSheetController,
     public fake: FakeDataProvider
   ) {}
 
   ionViewDidLoad() {
-    this.getTable();
+    this.getTables();
+  }
+
+  getTables() {
+    this.tables_in_use = [];
+    this.tables_in_use = this.table.getActiveDesk();
+    this.changeState();
+  }
+
+  presentAlert(): void {
+    let alert = this.alertCtrl.create({
+      title: "Confirmacion",
+      subTitle: "Se ha eliminado la mesa correctamente.",
+      buttons: [
+        {
+          text: "ACEPTAR",
+          role: "Accept",
+          handler: () => {
+            this.getTables();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   newDeskAlert(): void {
@@ -55,7 +81,8 @@ export class DeskPage {
             text: "ACEPTAR",
             role: "Accept",
             handler: data => {
-              //this.createTable(data);
+              this.table.createDesk(data);
+              this.getTables();
               this.changeState();
             }
           }
@@ -65,25 +92,38 @@ export class DeskPage {
     }
   }
 
-  getTable() {
-    this.fake.getTables().then(resp => {
-      this.tables_in_use = resp.desk;
-      console.log(this.tables_in_use);
-    });
-  }
-
   changeState() {
-    this.table.table_id = this.table.table_id + 1;
-    if (this.table.table_id === 6 || this.table.table_id < 0) {
+    const quantity_tables = this.table.desk.length;
+    if (quantity_tables === 6) {
       this.avaliable = false;
+    } else {
+      this.avaliable = true;
     }
   }
 
-  move(name, lastname) {
-    this.navCtrl.push(DetailsPage, { name: name, lastname: lastname });
+  move(name, lastname, id) {
+    this.navCtrl.push(DetailsPage, { name: name, lastname: lastname, id });
   }
 
-  test() {
-    this.table.clearDesk();
+  presentActionSheet(data) {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: "Acciones a realizar",
+      buttons: [
+        {
+          text: "Eliminar",
+          handler: () => {
+            this.table.clearDesk(data);
+            this.presentAlert();
+          }
+        },
+        {
+          text: "Cancelar",
+          role: "cancel",
+          handler: () => {}
+        }
+      ]
+    });
+
+    actionSheet.present();
   }
 }

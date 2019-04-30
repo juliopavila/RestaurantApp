@@ -10,7 +10,13 @@
       <ion-row>
         <ion-col col-6 *ngFor="let m of tables_in_use">
           <div text-center>
-            <button ion-button clear (click)="move(m.name, m.lastname)">
+            <button
+              ion-button
+              clear
+              (press)="presentActionSheet(m.id)"
+              (click)="move(m.name, m.lastname, m.id)"
+            >
+              <!--(click)="move(m.name, m.lastname)"-->
               <img
                 src="../../assets/imgs/restaurant.png"
                 width="80px"
@@ -23,7 +29,6 @@
       </ion-row>
     </ion-grid>
   </ion-item>
-  <!-- <button ion-button (click)="test()">TEST</button> -->
 </ion-content>
 
 <ion-footer>

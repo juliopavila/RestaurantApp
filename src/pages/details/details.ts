@@ -6,6 +6,7 @@ import {
   AlertController
 } from "ionic-angular";
 import { DishHttpProvider } from "../../providers/dish-http/dish-http";
+import { FakeDataProvider } from "../../providers/fake-data/fake-data";
 
 @IonicPage()
 @Component({
@@ -22,23 +23,31 @@ export class DetailsPage {
   testCheckboxResult: any;
   dishes: any[] = [];
   cart: any[] = [];
+  table_id: any;
+  command: any[] = [];
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public httpDish: DishHttpProvider,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public fake: FakeDataProvider
   ) {}
 
   ionViewDidLoad() {
     this.name = this.navParams.get("name");
     this.lastname = this.navParams.get("lastname");
+    this.table_id = this.navParams.get("id");
     this.getDish();
   }
 
   getDish() {
     this.dish = [];
-    this.httpDish.getDish().subscribe(res => {
+    // this.httpDish.getDish().subscribe(res => {
+    //   this.dish = res.general_category;
+    //   console.log(this.dish);
+    // });
+    this.fake.getPlates().then(res => {
       this.dish = res.general_category;
       console.log(this.dish);
     });
@@ -93,7 +102,8 @@ export class DetailsPage {
     alert.addButton({
       text: "ACEPTAR",
       handler: (data: any) => {
-        console.log(data);
+        this.command = [];
+        this.command = data;
       }
     });
 

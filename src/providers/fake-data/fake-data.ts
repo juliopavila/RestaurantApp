@@ -140,7 +140,6 @@ export class FakeDataProvider {
     };
     return new Promise((resolve, reject) => {
       window.setTimeout(() => {
-        console.log("Result obtainined... for example from a service");
         resolve({ bill: data.bill });
       }, 1000);
     });
