@@ -31,14 +31,13 @@ export class IngredientsPage {
 
   ingredients(): void {
     this.list = [];
-    // this.dishHttp.getIngredients()
-    //   .subscribe(res => {
-    //     this.list = res.ingredients;
-    //     console.log(this.list);
-    //   })
-    this.fake.getIngridents().then(res => {
+    this.dishHttp.getIngredients().subscribe(res => {
       this.list = res.ingredients;
+      console.log(this.list);
     });
+    // this.fake.getIngridents().then(res => {
+    //   this.list = res.ingredients;
+    // });
   }
 
   takeId(info) {

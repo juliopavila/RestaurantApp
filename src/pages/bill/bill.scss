@@ -1,4 +1,4 @@
-page-details {
+page-bill {
   .toolbar-background {
     background-color: transparent;
   }
@@ -12,19 +12,10 @@ page-details {
     color: color($colors, primary, base);
   }
 
-  //Propiedades de los botones
-  .button-clear-md,
-  .button-clear-ios {
-    height: 85px;
-  }
-
-  h3 {
-    color: color($colors, primary, base);
-  }
-
   .button-clear-md,
   .button-clear-ios {
     height: 20px;
     font-size: 24px;
+    margin-bottom: 1.2vh;
   }
 }

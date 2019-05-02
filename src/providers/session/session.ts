@@ -1,21 +1,17 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
 @Injectable()
 export class SessionProvider {
-
   user: any;
 
-  constructor(public http: HttpClient) {
-    console.log('Hello SessionProvider Provider');
-  }
+  constructor(public http: HttpClient) {}
 
   dataSession(info): void {
     this.user = {
-      "token": info.token,
-      "type": info.data.type,
-      "name": info.data.name
+      token: info.token,
+      type: info.data.type,
+      name: info.data.name
     };
     console.log(this.user);
   }
@@ -23,5 +19,4 @@ export class SessionProvider {
   sessionDestroy(): void {
     this.user = {};
   }
-
 }

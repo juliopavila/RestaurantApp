@@ -25,6 +25,9 @@ import { FakeDataProvider } from "../providers/fake-data/fake-data";
 import { DeskPage } from "../pages/desk/desk";
 import { DeskStateProvider } from "../providers/desk-state/desk-state";
 import { DetailsPage } from "../pages/details/details";
+import { DeskDetailsProvider } from "../providers/desk-details/desk-details";
+import { BillPage } from "../pages/bill/bill";
+import { BillsProvider } from '../providers/bills/bills';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { DetailsPage } from "../pages/details/details";
     PopoverComponent,
     ReportPage,
     DeskPage,
-    DetailsPage
+    DetailsPage,
+    BillPage
   ],
   imports: [HttpClientModule, BrowserModule, IonicModule.forRoot(MyApp)],
   bootstrap: [IonicApp],
@@ -56,7 +60,8 @@ import { DetailsPage } from "../pages/details/details";
     IngredientsPage,
     ReportPage,
     DeskPage,
-    DetailsPage
+    DetailsPage,
+    BillPage
   ],
   providers: [
     StatusBar,
@@ -68,7 +73,9 @@ import { DetailsPage } from "../pages/details/details";
     DishHttpProvider,
     ReportHttpProvider,
     FakeDataProvider,
-    DeskStateProvider
+    DeskStateProvider,
+    DeskDetailsProvider,
+    BillsProvider
   ]
 })
 export class AppModule {}

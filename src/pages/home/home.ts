@@ -35,25 +35,25 @@ export class HomePage {
   }
 
   login(): void {
-    this.navCtrl.setRoot(DashboardPage, { type: 1 });
-    // if (this.fg.valid) {
-    //   this.userHttp.login(this.fg.value).subscribe(res => {
-    //     console.log(res.status);
-    //     if (res.status == 200) {
-    //       console.log(res.status);
-    //       this.session.dataSession(res);
-    //       this.navCtrl.setRoot(DashboardPage);
-    //     } else {
-    //       alert("Error");
-    //       this.presentAlert("Error", "Usuario o contraseña incorrecto.");
-    //     }
-    //   });
-    // } else {
-    //   this.presentAlert(
-    //     "Error",
-    //     "Ha ocurrido un error de conexion, intente mas tarde."
-    //   );
-    // }
+    //    this.navCtrl.setRoot(DashboardPage, { type: 1 });
+    if (this.fg.valid) {
+      this.userHttp.login(this.fg.value).subscribe(res => {
+        console.log(res.status);
+        if (res.status == 200) {
+          console.log(res.status);
+          this.session.dataSession(res);
+          this.navCtrl.setRoot(DashboardPage);
+        } else {
+          alert("Error");
+          this.presentAlert("Error", "Usuario o contraseña incorrecto.");
+        }
+      });
+    } else {
+      this.presentAlert(
+        "Error",
+        "Ha ocurrido un error de conexion, intente mas tarde."
+      );
+    }
   }
 
   register(): void {

@@ -10,6 +10,7 @@ import { DishPage } from "../dish/dish";
 import { IngredientsPage } from "../ingredients/ingredients";
 import { ReportPage } from "../report/report";
 import { DeskPage } from "../desk/desk";
+import { BillPage } from "../bill/bill";
 
 @IonicPage()
 @Component({
@@ -27,10 +28,10 @@ export class DashboardPage {
   ) {}
 
   ionViewDidLoad(): void {
-    // let user = this.session.user;
-    // this.type_user = user.type;
+    let user = this.session.user;
+    this.type_user = user.type;
     this.menuCtrl.enable(true);
-    this.type_user = this.navParams.get("type");
+    // this.type_user = this.navParams.get("type");
   }
 
   move(op): void {
@@ -49,6 +50,10 @@ export class DashboardPage {
 
       case 4:
         this.navCtrl.push(DeskPage);
+        break;
+
+      case 5:
+        this.navCtrl.push(BillPage);
         break;
     }
   }

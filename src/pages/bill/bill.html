@@ -1,0 +1,58 @@
+<ion-header no-shadow no-border>
+  <ion-navbar>
+    <ion-title>FACTURAS</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let b of bills">
+    <ion-card-header>
+      <ion-label
+        >Cliente: {{ b.bill_name_client }}
+        {{ b.bill_lastname_client }}</ion-label
+      >
+      <ion-label>No. De Factura: {{ b.bill_facture_number }}</ion-label>
+      <ion-label>No. De Transaccion: {{ b.bill_id }} </ion-label>
+      <ion-label
+        >Fecha: {{ b.bill_creatin_time | date: "dd/MM/yyyy" }}</ion-label
+      >
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 *ngFor="let l of list_plates">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-10>
+                  {{ l.recipe_title }}
+                </ion-col>
+                <ion-col col-2>
+                  <button
+                    ion-button
+                    clear
+                    (click)="deleteDish(l.recipe_id); bill(b)"
+                  >
+                    <ion-icon name="close"></ion-icon>
+                  </button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab right bottom>
+    <button ion-fab>
+      <ion-icon name="ios-arrow-back-outline"></ion-icon>
+    </button>
+    <ion-fab-list side="left">
+      <button ion-fab primary (click)="presentAlert()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+      <button ion-fab>
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
