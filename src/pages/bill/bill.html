@@ -40,6 +40,9 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+      <ion-item no-lines text-center>
+        <button ion-button full (click)="doRadio()">AGREGAR CONSUMO</button>
+      </ion-item>
     </ion-card-content>
   </ion-card>
   <ion-fab right bottom>
@@ -50,7 +53,7 @@
       <button ion-fab primary (click)="presentAlert()">
         <ion-icon name="search"></ion-icon>
       </button>
-      <button ion-fab>
+      <button ion-fab (click)="updateBill()">
         <ion-icon name="create"></ion-icon>
       </button>
     </ion-fab-list>

@@ -20,11 +20,12 @@ export class DetailsPage {
   fg: FormGroup;
   testRadioOpen = false;
   testRadioResult: any;
+  testCheckboxOpen = false;
+  testCheckboxResult: any;
   name: any;
   lastname: any;
   dish: any[] = [];
-  testCheckboxOpen = false;
-  testCheckboxResult: any;
+
   dishes: any[] = [];
   cart: any[] = [];
   table_id: any;
@@ -55,13 +56,13 @@ export class DetailsPage {
 
   getDish() {
     this.dish = [];
-    // this.httpDish.getDish().subscribe(res => {
-    //   this.dish = res.general_category;
-    //   console.log(this.dish);
-    // });
-    this.fake.getPlates().then(res => {
+    this.httpDish.getDish().subscribe(res => {
       this.dish = res.general_category;
+      console.log(this.dish);
     });
+    // this.fake.getPlates().then(res => {
+    //   this.dish = res.general_category;
+    // });
   }
 
   doRadio() {

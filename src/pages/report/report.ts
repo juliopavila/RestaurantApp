@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { FormGroup, FormControl } from "@angular/forms";
 import { ReportHttpProvider } from "../../providers/report-http/report-http";
 import { FakeDataProvider } from "../../providers/fake-data/fake-data";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 
 @IonicPage()
 @Component({
@@ -21,7 +20,8 @@ export class ReportPage {
   ) {
     this.fg = new FormGroup({
       dateFrom: new FormControl(null),
-      dateTo: new FormControl(null)
+      dateTo: new FormControl(null),
+      name: new FormControl()
     });
   }
 
@@ -31,19 +31,15 @@ export class ReportPage {
     this.searchState = true;
     this.list = [];
     let data = this.fg.value;
-    this.reportHttp.getReport(data.dateFrom, data.dateTo).subscribe(res => {
-      console.log(res);
-      this.list = res;
-      this.list.forEach(p => {
-        p.state = true;
+    this.reportHttp
+      .getReport(data.dateFrom, data.dateTo, data.name)
+      .subscribe(res => {
+        console.log(res);
+        this.list = res;
+        this.list.forEach(p => {
+          p.state = true;
+        });
       });
-    });
-    // this.fake.getReports().then(d => {
-    //   this.list = d.bill;
-    //   this.list.forEach(p => {
-    //     p.state = true;
-    //   });
-    // });
   }
 
   /**

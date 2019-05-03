@@ -41,6 +41,7 @@ export class BillsProvider {
   }
 
   putBill(body): Observable<any> {
+    console.log(body);
     const url = `${this.url.getUrl()}/bill`;
     return this.http.put(url, body, this.header).pipe();
   }

@@ -9,6 +9,7 @@ import {
 import { DeskStateProvider } from "../../providers/desk-state/desk-state";
 import { FakeDataProvider } from "../../providers/fake-data/fake-data";
 import { DetailsPage } from "../details/details";
+import { DishHttpProvider } from "../../providers/dish-http/dish-http";
 
 @IonicPage()
 @Component({
@@ -19,13 +20,15 @@ export class DeskPage {
   avaliable = true;
   tables_in_use: any[] = [];
   tables = [];
+  dish: any[];
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public table: DeskStateProvider,
     public actionSheetCtrl: ActionSheetController,
-    public fake: FakeDataProvider
+    public fake: FakeDataProvider,
+    private httpDish: DishHttpProvider
   ) {}
 
   ionViewDidLoad() {
@@ -125,5 +128,13 @@ export class DeskPage {
     });
 
     actionSheet.present();
+  }
+
+  getDish() {
+    this.dish = [];
+    this.httpDish.getDish().subscribe(res => {
+      this.dish = res.general_category;
+      console.log(this.dish);
+    });
   }
 }

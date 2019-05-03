@@ -20,8 +20,8 @@ export class ReportHttpProvider {
    * Metodo de enviar la peticion obtener el reporte
    * @returns Observable con la respuesta del servidor
    */
-  getReport(dfrom, dto): Observable<any> {
-    const url = `${this.url.getUrl()}/reports?dateFrom=${dfrom}&dateTo=${dto}`;
+  getReport(dfrom, dto, name): Observable<any> {
+    const url = `${this.url.getUrl()}/reports?dateFrom=${dfrom}&dateTo=${dto}&name=${name}`;
     return this.http.get(url, httpHeaders).pipe();
   }
 }
