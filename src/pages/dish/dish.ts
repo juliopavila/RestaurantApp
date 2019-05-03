@@ -27,11 +27,11 @@ export class DishPage {
   ) {}
 
   ionViewDidLoad(): void {
+    this.type_menu = [];
     this.getAllDish();
   }
 
   getAllDish(): void {
-    this.type_menu = [];
     this.dishHttp.getDish().subscribe(res => {
       this.type_menu = res.general_category;
       this.type_menu.map(t => {
@@ -44,13 +44,6 @@ export class DishPage {
       });
       console.log(this.type_menu);
     });
-    // this.fake.getPlates().then(res => {
-    //   this.type_menu = res.general_category;
-    //   this.type_menu.map(t => {
-    //     console.log(t.general_name);
-    //   });
-    //   console.log(this.type_menu);
-    // });
   }
 
   selectMenu(list, type): void {

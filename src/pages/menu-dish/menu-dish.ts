@@ -9,6 +9,7 @@ import { RecipePage } from "../recipe/recipe";
 import { DishHttpProvider } from "../../providers/dish-http/dish-http";
 import { DishPage } from "../dish/dish";
 import { ActionSheetController } from "ionic-angular";
+import { DashboardPage } from "../dashboard/dashboard";
 
 @IonicPage()
 @Component({
@@ -43,6 +44,7 @@ export class MenuDishPage {
       this.ingridients = res.ingredients;
     });
   }
+
   recipe(id): void {
     this.navCtrl.push(RecipePage, { id: id });
   }
@@ -138,7 +140,7 @@ export class MenuDishPage {
             this.ihttp.updatePlate(info).subscribe(res => {
               if (res.status == 200) {
                 this.presentAlert("Confirmacion", "Se ha actualizado el plato");
-                this.navCtrl.push(DishPage);
+                this.navCtrl.setRoot(DashboardPage);
               } else {
                 this.presentAlert("Error", "Ocurrio un problema");
               }
@@ -201,7 +203,7 @@ export class MenuDishPage {
       console.log(res);
       if (res.status == 201) {
         this.presentAlert("Confirmacion", "Se ha creado el plato");
-        this.navCtrl.push(DishPage);
+        this.navCtrl.setRoot(DashboardPage);
       } else {
         this.presentAlert("Error", "Ocurrio un problema");
       }
@@ -237,7 +239,13 @@ export class MenuDishPage {
           text: "Eliminar",
           handler: () => {
             this.ihttp.deletePlate(data).subscribe(res => {
-              console.log(res);
+              if (res.status === 200) {
+                this.presentAlert(
+                  "Confirmacion",
+                  "Se ha eliminado el plato satisfactoriamente"
+                );
+                this.navCtrl.setRoot(DashboardPage);
+              }
             });
           }
         },
