@@ -1,0 +1,21 @@
+page-bill {
+  .toolbar-background {
+    background-color: transparent;
+  }
+  .bar-button-default-md,
+  .bar-button-clear-md-default,
+  .bar-button-md-default {
+    color: color($colors, primary, base);
+  }
+
+  .toolbar-title-md {
+    color: color($colors, primary, base);
+  }
+
+  .button-clear-md,
+  .button-clear-ios {
+    height: 20px;
+    font-size: 24px;
+    margin-bottom: 1.2vh;
+  }
+}

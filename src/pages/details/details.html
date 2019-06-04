@@ -1,0 +1,41 @@
+<ion-header no-shadow no-border>
+  <ion-navbar>
+    <ion-title
+      >MESA DE {{ name | uppercase }} {{ lastname | uppercase }}</ion-title
+    >
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 *ngFor="let d of command">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-10>
+              {{ d.recipe_title }}
+            </ion-col>
+            <ion-col col-2>
+              <button ion-button clear (click)="deleteDish(d.recipe_id)">
+                <ion-icon name="close"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab right bottom>
+    <button ion-fab>
+      <ion-icon name="ios-arrow-back-outline"></ion-icon>
+    </button>
+    <ion-fab-list side="left">
+      <button ion-fab primary (click)="doRadio()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      <button ion-fab (click)="bill()">
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-header no-shadow no-border>
+  <ion-navbar no-lines>
+    <ion-title>TIPOS DE MENU</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-row *ngFor="let m of type_menu">
+      <ion-col>
+        <ion-item
+          (click)="selectMenu(m.list_recipe, m.type)"
+          text-left
+          no-lines
+        >
+          {{ m.general_name }}
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item text-right no-lines>
+          <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>

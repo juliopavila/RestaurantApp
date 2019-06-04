@@ -1,0 +1,31 @@
+page-dashboard {
+  .toolbar-background {
+    background-color: transparent;
+  }
+
+  .menu-color {
+    color: color($colors, primary, base);
+  }
+
+  img {
+    min-width: 100%;
+    padding: 0px !important;
+  }
+
+
+  //Propiedades de la imagen del fondo
+  ion-footer {
+    max-width: 100vh !important;
+    bottom: -1%;
+  }
+
+  //Propiedades de los botones
+  .button-clear-md,
+  .button-clear-ios {
+    height: 85px;
+  }
+
+  h3 {
+    color: color($colors, primary, base);
+  }
+}

@@ -1,0 +1,27 @@
+page-ingredients {
+  .toolbar-background {
+    background-color: transparent;
+  }
+  .bar-button-default-md,
+  .bar-button-clear-md-default,
+  .bar-button-md-default {
+    color: color($colors, primary, base);
+  }
+
+  .toolbar-title-md {
+    color: color($colors, primary, base);
+  }
+
+  h2 {
+    color: color($colors, primary, base) !important;
+  }
+
+  .fixed-content {
+    margin-top: 50px !important;
+  }
+
+  .scroll-content {
+    margin-top: 50px !important;
+    bottom: 70px !important;
+  }
+}

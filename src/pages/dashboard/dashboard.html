@@ -1,0 +1,96 @@
+<ion-header no-shadow no-border>
+  <ion-navbar no-lines>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle class="menu-color">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- Menu para la cocina-->
+  <ion-item no-lines *ngIf="type_user === 0">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <div text-center>
+            <button ion-button clear (click)="move(1)">
+              <img src="../../assets/imgs/dish.png" />
+            </button>
+            <h3>Platillos</h3>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div text-center>
+            <button ion-button clear (click)="move(2)">
+              <img src="../../assets/imgs/diet.png" />
+            </button>
+            <h3>Ingredientes</h3>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+  <!-- Fin de menu para la cocina-->
+  <!-- Menu para la Caja-->
+  <ion-item no-lines *ngIf="type_user === 1">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <div text-center>
+            <button ion-button clear (click)="move(4)">
+              <img
+                src="../../assets/imgs/table.png"
+                width="80px"
+                height="80px"
+              />
+            </button>
+            <h3>Mesas</h3>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div text-center>
+            <button ion-button clear (click)="move(1)">
+              <img src="../../assets/imgs/dish.png" />
+            </button>
+            <h3>Platillos</h3>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div text-center>
+            <button ion-button clear (click)="move(5)">
+              <img
+                src="../../assets/imgs/bill.png"
+                width="80px"
+                height="80px"
+              />
+            </button>
+            <h3>Facturas</h3>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+  <!-- Fin de menu para la Caja-->
+  <!-- Menu para la contabilidad-->
+  <ion-item no-lines *ngIf="type_user === 2">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <div text-center>
+            <button ion-button clear (click)="move(3)">
+              <img src="../../assets/imgs/tray.png" />
+            </button>
+            <h3>Reportes</h3>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+  <!-- Fin de menu para contabilidad-->
+</ion-content>
+
+<ion-footer no-shadow no-border>
+  <img src="../../assets/imgs/Path 1.svg" no-padding />
+</ion-footer>

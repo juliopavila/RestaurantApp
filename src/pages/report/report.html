@@ -1,0 +1,48 @@
+<ion-header no-shadow no-border>
+  <ion-navbar no-lines>
+    <ion-title>REPORTES</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="fg" (ngSubmit)="report()">
+    <ion-item>
+      <ion-label>Fecha de comienzo:</ion-label>
+      <ion-datetime
+        displayFormat="DD MMM YYYY"
+        pickerFormat="DD MM YYYY"
+        formControlName="dateFrom"
+      ></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha de finalizacion:</ion-label>
+      <ion-datetime
+        displayFormat="DD MMM YYYY"
+        pickerFormat="DD MM YYYY"
+        formControlName="dateTo"
+      >
+      </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nombre Del Cliente</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <div padding>
+      <button ion-button round block type="submit">SOLICITAR REPORTE</button>
+    </div>
+  </form>
+
+  <ion-card *ngFor="let r of list">
+    <div *ngIf="r.state">
+      <ion-card-content>
+        <ion-card-title
+          >Cliente: {{ r.bill_name_client }}
+          {{ r.bill_lastname_client }}</ion-card-title
+        >
+        <p>No. De Factura: {{ r.bill_facture_number }}</p>
+        <p>Fecha: {{ r.bill_creatin_time | date: "dd/MM/yyyy" }}</p>
+        <p>Monto De la Factura: {{ r.bill_mount }}$</p>
+      </ion-card-content>
+    </div>
+  </ion-card>
+</ion-content>
